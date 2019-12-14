@@ -1,5 +1,6 @@
 class SubsController < ApplicationController
 
+    before_action :require_signed_in, except: [:index, :show]
     before_action :verify_moderator, only: [:edit, :update]
 
     def index

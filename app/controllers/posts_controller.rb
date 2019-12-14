@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+    before_action :require_signed_in, except: [:show]
     before_action :verify_author, only: [:edit, :update, :destroy]
 
     def new
@@ -53,6 +54,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:title, :author_id, :content, :url)
+        params.require(:post).permit(:title, :author_id, :content, :url, :sub_ids[])
     end
 end
