@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+    before_action :verify_author, only: [:edit, :update, :destroy]
+
     def new
         @post = Post.new
         render :new
@@ -44,6 +46,11 @@ class PostsController < ApplicationController
     end
 
     private
+
+    def verify_author
+        return if current_user.posts.find_by(id: params[:id])
+        render json: 'You are not the author', status: :forbidden
+    end
 
     def post_params
         params.require(:post).permit(:title, :author_id, :content, :url)

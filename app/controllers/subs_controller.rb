@@ -51,7 +51,8 @@ class SubsController < ApplicationController
     end
 
     def verify_moderator
-        redirect_to subs_url unless current_user.id == self.moderator_id
+        return if current_user.subs.find_by(id: params[:id])
+        render json: 'You are not moderator', status: :forbidden
     end
 
 end
