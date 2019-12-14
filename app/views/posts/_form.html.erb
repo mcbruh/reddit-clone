@@ -1,6 +1,6 @@
 <% action = post.persisted? ? post_url(post) : posts_url %>
 <% method = post.persisted? ? "PATCH" : "POST" %>
-<% submit_button = post.persisted? "Update post" : "Create post" %>
+<% submit_button = post.persisted? ? "Update post" : "Create post" %>
 
 <form action="<%= action %>" method="POST">
     <input 
@@ -26,6 +26,7 @@
         value="<%= post.url %>">
     <br><br>
     <label for="post_content">Content</label>
+    <br>
     <textarea 
         name="post[content]" 
         id="post_content" 
