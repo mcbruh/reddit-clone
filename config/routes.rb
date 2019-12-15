@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :subs, only: [:index, :new, :create, :show, :edit, :update]
-  resources :posts, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :comments, only: [:new]
+  end
+  resources :comments, only: [:new, :create]
 end

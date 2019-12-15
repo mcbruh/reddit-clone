@@ -4,4 +4,5 @@ class Post < ApplicationRecord
     primary_key: 'id', inverse_of: 'posts'
     has_many :post_subs, inverse_of: :post, dependent: :destroy
     has_many :subs, through: :post_subs, source: :sub
+    has_many :comments, inverse_of: :post
 end

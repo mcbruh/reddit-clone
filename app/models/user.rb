@@ -9,6 +9,7 @@ class User < ApplicationRecord
     has_many :subs, class_name: 'Sub', foreign_key: 'moderator_id',
     primary_key: 'id', inverse_of: 'moderator'
     has_many :posts, inverse_of: 'author'
+    has_many :comments, inverse_of: 'author'
 
     def password=(password)
         @password = password

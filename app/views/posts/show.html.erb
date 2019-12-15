@@ -4,3 +4,20 @@
 <br><br>
 
 <p><%= @post.content %></p>
+
+<br><br>
+
+<h3>Comments</h3>
+
+<a href="<%= new_post_comment_url(@post.id) %>">Comment on this post!</a>
+
+<br>
+<ul>
+    <% parent_comments = @post.comments.where(parent_comment_id: nil) %>
+    <% parent_comments.each do |parent_comment| %>
+    <li>
+        <%= render("comments/comment",
+                    comment: parent_coment) %>
+    </li>
+    <% end %>
+</ul>
