@@ -28,7 +28,7 @@
     <li>
         <%= parent_comment.body %>
         <br>
-        <small><a href="comment_url(parent_comment)">Comment</a></small>
+        <small><a href="<%= comment_url(parent_comment) %>">Comment</a></small>
     </li>
     <% end %>
 </ul>

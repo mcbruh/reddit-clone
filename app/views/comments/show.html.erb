@@ -1,0 +1,5 @@
+<p><%= @comment.body %></p>
+<small>posted by: <%= @comment.author.username %></small>
+<br>
+<p>Reply</p>
+<%= render 'form', comment: @new_comment %>
