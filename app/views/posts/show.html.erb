@@ -1,7 +1,9 @@
 <h1><%= @post.title %></h1>
 <small>posted by: <%= @post.author.username %></small>
 <br>
-<small><a href="<%= @post.url %>">url</a></small>
+<% unless @post.url == "" %>
+    <small><a href="<%= @post.url %>">url</a></small>
+<% end %>
 <br><br>
 
 <p><%= @post.content %></p>
