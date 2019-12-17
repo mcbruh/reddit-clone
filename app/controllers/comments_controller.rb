@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+    before_action :require_signed_in, only: [:new, :create]
+
     def new
         @comment = Comment.new(post_id: params[:post_id])
     end
@@ -13,6 +15,10 @@ class CommentsController < ApplicationController
             flash[:errors] = @comment.errors.full_messages
             redirect_to new_post_comment_url(@comment.post_id)
         end
+    end
+
+    def show
+        @comment = Comment.find(params[:id])
     end
 
     private

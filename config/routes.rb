@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :comments, only: [:new]
   end
-  resources :comments, only: [:new, :create]
+  resources :comments, only: [:new, :create, :show]
 
   root to: redirect('/subs')
 end

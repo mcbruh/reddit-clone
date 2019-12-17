@@ -1,11 +1,19 @@
 <h1><%= @post.title %></h1>
 <small>posted by: <%= @post.author.username %></small>
-
+<br>
+<small><a href="<%= @post.url %>">url</a></small>
 <br><br>
 
 <p><%= @post.content %></p>
 
 <br><br>
+
+<h3>Subs</h3>
+<ul>
+    <% @post.subs.each do |sub| %>
+        <li><a href="<%= sub_url(sub) %>"><%= sub.title %></a></li>
+    <% end %>
+</ul>
 
 <h3>Comments</h3>
 
@@ -16,8 +24,9 @@
     <% parent_comments = @post.comments.where(parent_comment_id: nil) %>
     <% parent_comments.each do |parent_comment| %>
     <li>
-        <%= render("comments/comment",
-                    comment: parent_coment) %>
+        <%= parent_comment.body %>
+        <br>
+        <small><a href="comment_url(parent_comment)">Comment</a></small>
     </li>
     <% end %>
 </ul>
